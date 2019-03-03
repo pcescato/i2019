@@ -1,0 +1,77 @@
+/*
+Theme Name: i2019
+Theme URI: https://i2019/wp-xp.xyz
+Template: twentynineteen
+Author: Pascal CESCATO
+Author URI: https://pascalcescato.gdn
+Description: Based on the Twenty Nineteen default Theme, i2019 offers additional customization options. It allows you to display your texts in full width, to delete the margin under the featured image, to personalize metadata displayed in archives and posts.
+Tags: one-column,flexible-header,full-width,accessibility-ready,custom-colors,custom-menu,custom-logo,editor-style,featured-images,footer-widgets,rtl-language-support,sticky-post,threaded-comments,translation-ready
+Version: 1.0.3
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Updated: 2019-02-10 01:02:33
+Text Domain:  i2019
+*/
+.entry-excerpt {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+@font-face {
+  font-family: 'i2019-font';
+  src: url('fonts/i2019-font.eot');
+  src: url('fonts/i2019-font.eot') format('embedded-opentype'),
+       url('fonts/i2019-font.woff2') format('woff2'),
+       url('fonts/i2019-font.woff') format('woff'),
+       url('fonts/i2019-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'i2019-font';
+    src: url('../font/i2019-font.svg?38971052#i2019-font') format('svg');
+  }
+}
+*/
+ 
+ [class^="i2019-icon-"]:before, [class*=" i2019-icon-"]:before {
+  font-family: "i2019-font";
+  font-style: normal;
+  font-weight: lighter;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.i2019-icon-stopwatch:before { content: '\e800'; } /* '' */
+.i2019-icon-info-circled-alt:before { content: '\f086'; } /* '' */

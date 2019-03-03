@@ -1,0 +1,192 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i2019\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-19 17:53+0000\n"
+"PO-Revision-Date: 2019-02-19 17:57+0000\n"
+"Last-Translator: pcescato <pascalcescato@yahoo.fr>\n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.0.3"
+
+#: footer.php:29
+msgid "Footer Menu"
+msgstr "Menu du pied de page"
+
+#: functions.php:42
+msgid "i2019 Options"
+msgstr "Réglages i2019"
+
+#: functions.php:43
+msgid "i2019 Theme Options."
+msgstr "Options du thème i2019."
+
+#: functions.php:48 functions.php:63
+msgid "Footer Content"
+msgstr "Contenu du pied de page"
+
+#: functions.php:52
+msgid "Change Footer Content Here."
+msgstr "Modifiez le contenu du pied de page ici."
+
+#: functions.php:72
+msgid "CSS Tweaks"
+msgstr "Ajustements CSS"
+
+#: functions.php:76
+msgid "All i2019 Theme CSS tweaks."
+msgstr "Tous les ajustements CSS."
+
+#: functions.php:83
+msgid "Archives Metas"
+msgstr "Métas des archives"
+
+#: functions.php:87
+msgid "Keep or remove Post Metas from Archives Pages."
+msgstr "Laissez ou supprimez les métas d'articles dans les pages d'archives."
+
+#: functions.php:93
+msgid "Single Post Content"
+msgstr "Contenu d'un article"
+
+#: functions.php:97
+msgid "Add extra content to single post."
+msgstr "Ajouter du contenu à l'article."
+
+#: functions.php:109
+msgid "Display excerpt above content"
+msgstr "Afficher l'extrait au-dessus de l'article"
+
+#: functions.php:124
+msgid "Display post words count"
+msgstr "Afficher le nombre de mots"
+
+#: functions.php:139
+msgid "Display post time to read"
+msgstr "Afficher le temps de lecture"
+
+#: functions.php:148
+msgid "Single Post Metas"
+msgstr "Méta Article"
+
+#: functions.php:152
+msgid "Keep or remove Post Metas from Single Post."
+msgstr "Laissez ou supprimez les métas d'articles dans les articles."
+
+#: functions.php:164
+msgid "Make Content Full Width"
+msgstr "Affichage pleine largeur du contenu"
+
+#: functions.php:179
+msgid "Remove featured Image Margin"
+msgstr "Supprimer la marge sous l'image à la Une"
+
+#: functions.php:194
+msgid "Set Separators between Menu Items"
+msgstr "Définir des séparateurs antre les éléments du menu"
+
+#: functions.php:208 functions.php:252
+msgid "Remove Author Post Meta"
+msgstr "Supprimer la méta Auteur"
+
+#: functions.php:223 functions.php:267
+msgid "Remove Date Post Meta"
+msgstr "Supprimer la méta Date"
+
+#: functions.php:238 functions.php:282
+msgid "Remove Comments Post Meta"
+msgstr "Supprimer la méta des commentaires"
+
+#: functions.php:297
+msgid "Remove Space After Title"
+msgstr "Supprimer l'espace après le titre"
+
+#. used between list items, there is a space after the comma.
+#: functions.php:365 functions.php:374
+msgid ", "
+msgstr ", "
+
+#. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories.
+#: functions.php:369
+msgid "Posted in"
+msgstr "Publié dans"
+
+#. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags.
+#: functions.php:378
+msgid "Tags:"
+msgstr "Étiquettes :"
+
+#. %s: Name of current post. Only visible to screen readers.
+#: functions.php:393 template-parts/header/entry-header.php:40
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr "Éditer %s"
+
+#: functions.php:434
+#, php-format
+msgid ""
+"<i class=\"i2019-icon-info-circled-alt\"></i> %s words - <i class=\"i2019-"
+"icon-stopwatch\"></i> Reading time: %s mn"
+msgstr ""
+"<i class=\"i2019-icon-info-circled-alt\"></i> %s mots - <i class=\"i2019-"
+"icon-stopwatch\"></i> Temps de lecture : %s mn"
+
+#: functions.php:436
+#, php-format
+msgid "<i class=\"i2019-icon-stopwatch\"></i> Reading time: %s mn"
+msgstr "<i class=\"i2019-icon-stopwatch\"></i> Temps de lecture : %s mn"
+
+#: functions.php:438
+#, php-format
+msgid "<i class=\"i2019-icon-info-circled-alt\"></i> %s words"
+msgstr "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots"
+
+#. %s: Name of current post. Only visible to screen readers
+#: template-parts/content/content-single.php:36
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+"Continuez la lecture<span class=\"screen-reader-text\"> de  \"%s\"</span>"
+
+#: template-parts/content/content-single.php:49
+msgid "Pages:"
+msgstr "Pages :"
+
+#: template-parts/content/content-excerpt.php:18
+msgctxt "post"
+msgid "Featured"
+msgstr "Mis en avant"
+
+#. Name of the theme
+msgid "i2019"
+msgstr "i2019"
+
+#. Description of the theme
+msgid ""
+"Based on the Twenty Nineteen default Theme, i2019 offers additional "
+"customization options. It allows you to display your texts in full width, to "
+"delete the margin under the featured image, to personalize metadata "
+"displayed in archives and posts."
+msgstr ""
+"Basé sur le thème par défaut Twenty Nineteen, i2019 offre des options de "
+"personnalisation supplémentaires. Il vous permet d'afficher vos textes en "
+"pleine largeur, de supprimer la marge sous l'image à la Une, de "
+"personnaliser les métadonnées affichées dans les archives et les "
+"publications."
+
+#. URI of the theme
+msgid "https://i2019/wp-xp.xyz"
+msgstr "https://i2019/wp-xp.xyz"
+
+#. Author of the theme
+msgid "Pascal CESCATO"
+msgstr "Pascal CESCATO"
+
+#. Author URI of the theme
+msgid "https://pascalcescato.gdn"
+msgstr "https://pascalcescato.gdn"
