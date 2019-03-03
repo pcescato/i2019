@@ -1,6 +1,7 @@
 /*
 Theme Name: i2019
 Theme URI: https://i2019/wp-xp.xyz
+GitHub Theme URI: https://github.com/pcescato/i2019
 Template: twentynineteen
 Author: Pascal CESCATO
 Author URI: https://pascalcescato.gdn
@@ -37,41 +38,41 @@ Text Domain:  i2019
   }
 }
 */
- 
+
  [class^="i2019-icon-"]:before, [class*=" i2019-icon-"]:before {
   font-family: "i2019-font";
   font-style: normal;
   font-weight: lighter;
   speak: none;
- 
+
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
   margin-right: .2em;
   text-align: center;
   /* opacity: .8; */
- 
+
   /* For safety - reset parent styles, that can break glyph codes*/
   font-variant: normal;
   text-transform: none;
- 
+
   /* fix buttons height, for twitter bootstrap */
   line-height: 1em;
- 
+
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
   margin-left: .2em;
- 
+
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
- 
+
   /* Font smoothing. That was taken from TWBS */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
+
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
+
 .i2019-icon-stopwatch:before { content: '\e800'; } /* '' */
 .i2019-icon-info-circled-alt:before { content: '\f086'; } /* '' */
