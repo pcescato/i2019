@@ -23,12 +23,12 @@
 	"template": "twentynineteen",
 	"country": "fr_FR",
 	"releases": "https://github.com/pcescato/i2019/releases",
-	"issues": "https://github.com/imath/i2019/issues",
+	"issues": "https://github.com/pcescato/i2019/issues",
 	"description": {
         	"en_US" : "Based on the Twenty Nineteen default Theme, i2019 offers additional customization options. It allows you to display your texts in full width, to delete the margin under the featured image, to personalize metadata displayed in archives and posts.",
         	"fr_FR" : "Basé sur le thème par défaut Twenty Nineteen, i2019 propose des options de personnalisation supplémentaires. Il permet d'afficher le contenu en pleine largeur, de supprimer la marge sous l'image à la Une, de personnaliser les métadonnées affichées dans les archives et les articles."
 	},
-	"README": "https://raw.githubusercontent.com/imath/vingt-dixsept/master/README.md",
+	"README": "https://raw.githubusercontent.com/pcescato/i2019/master/README.md",
 	"urls": {
         	"history": "https://raw.githubusercontent.com/pcescato/i2019/master/CHANGELOG.md",
         	"donate": "https://paypal.me/pascalcescato",
