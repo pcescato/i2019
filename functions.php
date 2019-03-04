@@ -81,7 +81,7 @@ function childtheme_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('i2019_footer_content', array(
-        'default' => 'All Rights Reserved.',
+        'default' => '',
         'sanitize_callback' => 'wp_filter_nohtml_kses'
             )
     );
@@ -181,7 +181,7 @@ function childtheme_customize_register($wp_customize) {
     );
 
     $wp_customize->add_setting('i2019_full_width', array(
-        'default' => 1,
+        'default' => 0,
         'sanitize_callback' => 'sanitize_checkbox'
             )
     );
@@ -196,7 +196,7 @@ function childtheme_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('i2019_remove_featured_margin', array(
-        'default' => 1,
+        'default' => 0,
         'sanitize_callback' => 'sanitize_checkbox'
             )
     );
@@ -211,7 +211,7 @@ function childtheme_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_setting('i2019_separators', array(
-        'default' => 1,
+        'default' => 0,
         'sanitize_callback' => 'sanitize_checkbox'
             )
     );
