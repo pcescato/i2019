@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: i2019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-19 17:53+0000\n"
-"PO-Revision-Date: 2019-02-19 17:57+0000\n"
+"POT-Creation-Date: 2019-03-04 01:05+0000\n"
+"PO-Revision-Date: 2019-03-04 01:18+0000\n"
 "Last-Translator: pcescato <pascalcescato@yahoo.fr>\n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
@@ -12,122 +12,139 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.0; wp-5.0.3"
+"X-Loco-Version: 2.2.0; wp-5.1"
 
 #: footer.php:29
 msgid "Footer Menu"
 msgstr "Menu du pied de page"
 
-#: functions.php:42
+#: functions.php:44
 msgid "i2019 Options"
 msgstr "Réglages i2019"
 
-#: functions.php:43
+#: functions.php:45
 msgid "i2019 Theme Options."
 msgstr "Options du thème i2019."
 
-#: functions.php:48 functions.php:63
+#: functions.php:50 functions.php:90
 msgid "Footer Content"
 msgstr "Contenu du pied de page"
 
-#: functions.php:52
+#: functions.php:54
 msgid "Change Footer Content Here."
 msgstr "Modifiez le contenu du pied de page ici."
 
-#: functions.php:72
+#: functions.php:60
+msgid "Infinite Scroll"
+msgstr "Défilement infini"
+
+#: functions.php:64
+msgid "Activate infinite scroll."
+msgstr "Activer le défilement infini."
+
+#: functions.php:76
+msgid ""
+"Activate infinite scroll when checked. You must enable Infinite scroll in "
+"Jetpack > Settings > Writing: Load more posts in page with a button"
+msgstr ""
+"Activer le défilement infini. Vous devez aussi activer l'option dans Jetpack "
+"> Réglages > Rédaction : <em>Charger les articles suivants grâce à un "
+"bouton</em>"
+
+#: functions.php:99
 msgid "CSS Tweaks"
 msgstr "Ajustements CSS"
 
-#: functions.php:76
+#: functions.php:103
 msgid "All i2019 Theme CSS tweaks."
 msgstr "Tous les ajustements CSS."
 
-#: functions.php:83
+#: functions.php:110
 msgid "Archives Metas"
 msgstr "Métas des archives"
 
-#: functions.php:87
+#: functions.php:114
 msgid "Keep or remove Post Metas from Archives Pages."
 msgstr "Laissez ou supprimez les métas d'articles dans les pages d'archives."
 
-#: functions.php:93
+#: functions.php:120
 msgid "Single Post Content"
 msgstr "Contenu d'un article"
 
-#: functions.php:97
+#: functions.php:124
 msgid "Add extra content to single post."
 msgstr "Ajouter du contenu à l'article."
 
-#: functions.php:109
+#: functions.php:136
 msgid "Display excerpt above content"
 msgstr "Afficher l'extrait au-dessus de l'article"
 
-#: functions.php:124
+#: functions.php:151
 msgid "Display post words count"
 msgstr "Afficher le nombre de mots"
 
-#: functions.php:139
+#: functions.php:166
 msgid "Display post time to read"
 msgstr "Afficher le temps de lecture"
 
-#: functions.php:148
+#: functions.php:175
 msgid "Single Post Metas"
 msgstr "Méta Article"
 
-#: functions.php:152
+#: functions.php:179
 msgid "Keep or remove Post Metas from Single Post."
 msgstr "Laissez ou supprimez les métas d'articles dans les articles."
 
-#: functions.php:164
+#: functions.php:191
 msgid "Make Content Full Width"
 msgstr "Affichage pleine largeur du contenu"
 
-#: functions.php:179
+#: functions.php:206
 msgid "Remove featured Image Margin"
 msgstr "Supprimer la marge sous l'image à la Une"
 
-#: functions.php:194
+#: functions.php:221
 msgid "Set Separators between Menu Items"
 msgstr "Définir des séparateurs antre les éléments du menu"
 
-#: functions.php:208 functions.php:252
+#: functions.php:235 functions.php:279
 msgid "Remove Author Post Meta"
 msgstr "Supprimer la méta Auteur"
 
-#: functions.php:223 functions.php:267
+#: functions.php:250 functions.php:294
 msgid "Remove Date Post Meta"
 msgstr "Supprimer la méta Date"
 
-#: functions.php:238 functions.php:282
+#: functions.php:265 functions.php:309
 msgid "Remove Comments Post Meta"
 msgstr "Supprimer la méta des commentaires"
 
-#: functions.php:297
+#: functions.php:324
 msgid "Remove Space After Title"
 msgstr "Supprimer l'espace après le titre"
 
 #. used between list items, there is a space after the comma.
-#: functions.php:365 functions.php:374
+#: functions.php:397 functions.php:406
 msgid ", "
 msgstr ", "
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories.
-#: functions.php:369
+#: functions.php:401
 msgid "Posted in"
 msgstr "Publié dans"
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags.
-#: functions.php:378
+#: functions.php:410
 msgid "Tags:"
 msgstr "Étiquettes :"
 
 #. %s: Name of current post. Only visible to screen readers.
-#: functions.php:393 template-parts/header/entry-header.php:40
+#: functions.php:425 template-parts/header/entry-header.php:40
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Éditer %s"
 
-#: functions.php:434
+#: functions.php:477
 #, php-format
 msgid ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s words - <i class=\"i2019-"
@@ -136,18 +153,140 @@ msgstr ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots - <i class=\"i2019-"
 "icon-stopwatch\"></i> Temps de lecture : %s mn"
 
-#: functions.php:436
+#: functions.php:479
 #, php-format
 msgid "<i class=\"i2019-icon-stopwatch\"></i> Reading time: %s mn"
 msgstr "<i class=\"i2019-icon-stopwatch\"></i> Temps de lecture : %s mn"
 
-#: functions.php:438
+#: functions.php:481
 #, php-format
 msgid "<i class=\"i2019-icon-info-circled-alt\"></i> %s words"
 msgstr "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots"
 
+#: functions.php:510
+msgid "Install Required Plugins"
+msgstr "Installer les extensions requises"
+
+#: functions.php:511
+msgid "Install Plugins"
+msgstr "Installer les extensions"
+
+#: functions.php:512
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Installation de l'extension : %s"
+
+#: functions.php:513
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr "Mise à jour de l'extension : %s"
+
+#: functions.php:514
+msgid "Something went wrong with the plugin API."
+msgstr "Quelque chose s'est mal passé avec l'API de l'extension."
+
+#: functions.php:515
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "Ce thème requiert l'extension suivante : %1$s."
+msgstr[1] "Ce thème requiert les extensions suivantes : %1$s."
+
+#: functions.php:520
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+"L'extension suivante nécessite une mise à jour pour assurer une "
+"compatibilité optimale avec le thème : %1$s."
+msgstr[1] ""
+"Les extensions suivantes nécessitent une mise à jour pour assurer une "
+"compatibilité optimale avec le thème : %1$s."
+
+#: functions.php:525
+#, php-format
+msgid "There is an update available for: %1$s."
+msgid_plural "There are updates available for the following plugins: %1$s."
+msgstr[0] "Une mise à jour est disponible pour : %1$s."
+msgstr[1] "Des mises à jour sont disponibles pour : %1$s."
+
+#: functions.php:530
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "L'extension suivante est actuellement désactivée : %1$s."
+msgstr[1] "Les extensions suivantes sont actuellement désactivées : %1$s."
+
+#: functions.php:535
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Démarrage de l'installation de l'extension"
+msgstr[1] "Démarrage de l'installation des'extensions"
+
+#: functions.php:540
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "Démarrage de la mise à jour de l'extension"
+msgstr[1] "Démarrage de la mise à jour des extensions"
+
+#: functions.php:545
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "Démarrage de l'activation de l'extension"
+msgstr[1] "Démarrage de l'activation des extensions"
+
+#: functions.php:550
+msgid "Return to Required Plugins Installer"
+msgstr "Retourner à l'installation des extensions requises"
+
+#: functions.php:551
+msgid "Plugin activated successfully."
+msgstr "Extension activée."
+
+#: functions.php:552
+msgid "The following plugin was activated successfully:"
+msgstr "L'extension suivante a éé activée :"
+
+#: functions.php:553
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Aucune action nécessaire : L'extension %1$s était déjà activée."
+
+#: functions.php:554
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"L'extension n'a pas été activée. Une version plus récente est requises, "
+"veuillez mettre à jour l'extension."
+
+#: functions.php:555
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Toutes les extensions ont été installées et activées. %1$s"
+
+#: functions.php:556
+msgid "Dismiss this notice"
+msgstr "Supprimer cette notice"
+
+#: functions.php:557
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"Il n'y a plus d'extension requise ou recommandée à installer et à activer."
+
+#: functions.php:558
+msgid "Please contact the administrator of this site for help."
+msgstr "Veuillez demander de l'aide à l'administrateur du site."
+
 #. %s: Name of current post. Only visible to screen readers
-#: template-parts/content/content-single.php:36
+#: template-parts/content/content-single.php:38
 #, php-format
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""
