@@ -22,6 +22,7 @@ function i2019_theme_setup() {
 add_action('after_setup_theme', 'i2019_theme_setup');
 
 require_once get_stylesheet_directory() . '/inc/class-tgm-plugin-activation.php';
+require_once get_stylesheet_directory() . '/inc/required-plugins.php';
 
 if (!function_exists('i2019_parent_css')):
 
@@ -201,7 +202,6 @@ function childtheme_customize_register($wp_customize) {
             )
     );
 
-
     $wp_customize->add_control('i2019_remove_featured_margin', array(
         'label' => __('Remove featured Image Margin', 'i2019'),
         'section' => 'i2019_css_tweaks',
@@ -209,6 +209,33 @@ function childtheme_customize_register($wp_customize) {
         'type' => 'checkbox',
         'priority' => 1
     ));
+
+    $wp_customize->add_section(
+            'i2019_theme_colors', array(
+        'title' => __('Theme Colors', 'i2019'),
+        'panel' => 'i2019_options',
+        'priority' => 0,
+        'capability' => 'edit_theme_options',
+        'description' => __('Define colors for text and background.', 'i2019'),
+            )
+    );
+
+    $wp_customize->add_setting( 'i2019_text_color', array(
+    	'default' => '#11171e'
+    ) );
+    $wp_customize->add_setting( 'i2019_background_color', array(
+    	'default' => '#f5f9fc'
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'i2019_text_color', array(
+      'section' => 'i2019_theme_colors',
+      'label'   => esc_html__( 'Text color', 'i2019' ),
+    ) ) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'i2019_background_color', array(
+      'section' => 'i2019_theme_colors',
+      'label'   => esc_html__( 'Background color', 'i2019' ),
+    ) ) );
 
     $wp_customize->add_setting('i2019_separators', array(
         'default' => 0,
@@ -337,10 +364,7 @@ add_action('wp_enqueue_scripts', 'i2019_custom_styles');
 
 function i2019_custom_styles() {
 
-/*    $custom_style = (1 != get_theme_mod('i2019_infinite_scroll')) ? "" : ".woocommerce .content-area .site-main, .entry .entry-content > *,
-  .entry .entry-summary > *, .comments-area {
-  max-width: none;
-}";*/
+  $custom_style = 'body {color:'. get_theme_mod('i2019_text_color', '#11171e') .'; background-color:'. get_theme_mod('i2019_background_color', '#f5f9fc') .'}';
 
     $custom_style .= (1 != get_theme_mod('i2019_full_width')) ? "" : ".woocommerce .content-area .site-main, .entry .entry-content > *,
   .entry .entry-summary > *, .comments-area {
@@ -483,84 +507,3 @@ function i2019_display_post_extra_metas() {
 
     return $output;
 }
-
-function i2019_register_required_plugins() {
-	$plugins = array(
-		array(
-			'name'               => 'GitHub Updater',
-			'slug'               => 'github-updater',
-			'source'             => 'https://github.com/afragen/github-updater/archive/master.zip',
-			'required'           => true,
-			'version'            => '8.7.0',
-		),
-	);
-
-	$config = array(
-		'id'           => 'i2019',
-		'default_path' => '',
-		'menu'         => 'tgmpa-install-plugins',
-		'parent_slug'  => 'themes.php',
-		'capability'   => 'edit_theme_options',
-		'has_notices'  => true,
-		'dismissable'  => true,
-		'dismiss_msg'  => '',
-		'is_automatic' => true,
-		'message'      => '',
-		'strings'      => array(
-			'page_title'                      => __( 'Install Required Plugins', 'i2019' ),
-			'menu_title'                      => __( 'Install Plugins', 'i2019' ),
-			'installing'                      => __( 'Installing Plugin: %s', 'i2019' ),
-			'updating'                        => __( 'Updating Plugin: %s', 'i2019' ),
-			'oops'                            => __( 'Something went wrong with the plugin API.', 'i2019' ),
-			'notice_can_install_required'     => _n_noop(
-				'This theme requires the following plugin: %1$s.',
-				'This theme requires the following plugins: %1$s.',
-				'i2019'
-			),
-			'notice_ask_to_update'            => _n_noop(
-				'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
-				'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
-				'i2019'
-			),
-			'notice_ask_to_update_maybe'      => _n_noop(
-				'There is an update available for: %1$s.',
-				'There are updates available for the following plugins: %1$s.',
-				'i2019'
-			),
-			'notice_can_activate_required'    => _n_noop(
-				'The following required plugin is currently inactive: %1$s.',
-				'The following required plugins are currently inactive: %1$s.',
-				'i2019'
-			),
-			'install_link'                    => _n_noop(
-				'Begin installing plugin',
-				'Begin installing plugins',
-				'i2019'
-			),
-			'update_link' 					  => _n_noop(
-				'Begin updating plugin',
-				'Begin updating plugins',
-				'i2019'
-			),
-			'activate_link'                   => _n_noop(
-				'Begin activating plugin',
-				'Begin activating plugins',
-				'i2019'
-			),
-			'return'                          => __( 'Return to Required Plugins Installer', 'i2019' ),
-			'plugin_activated'                => __( 'Plugin activated successfully.', 'i2019' ),
-			'activated_successfully'          => __( 'The following plugin was activated successfully:', 'i2019' ),
-			'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'i2019' ),
-			'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'i2019' ),
-			'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'i2019' ),
-			'dismiss'                         => __( 'Dismiss this notice', 'i2019' ),
-			'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'i2019' ),
-			'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'i2019' ),
-			'nag_type'                        => '',
-		),
-	);
-
-	tgmpa( $plugins, $config );
-}
-
-add_action( 'tgmpa_register', 'i2019_register_required_plugins' );
