@@ -33,11 +33,9 @@ if (!function_exists('i2019_parent_css')):
 endif;
 add_action('wp_enqueue_scripts', 'i2019_parent_css', 10);
 
-// END ENQUEUE PARENT ACTION
+add_action('customize_register', 'i2019_customize_register');
 
-add_action('customize_register', 'childtheme_customize_register'); //second argument is arbitrary, but cannot have hyphens because php does not allow them in function names.
-
-function childtheme_customize_register($wp_customize) {
+function i2019_customize_register($wp_customize) {
 
     $wp_customize->add_panel('i2019_options', array(
         'priority' => 1,
@@ -369,7 +367,12 @@ function i2019_custom_styles() {
     $custom_style .= (1 != get_theme_mod('i2019_full_width')) ? "" : ".woocommerce .content-area .site-main, .entry .entry-content > *,
   .entry .entry-summary > *, .comments-area {
   max-width: none;
-}";
+}
+.entry .entry-content .wp-block-image .aligncenter {
+  max-width: 100%;
+  width: 100%;
+}
+";
     $custom_style .= (1 != get_theme_mod('i2019_separators')) ? "" : '#menu-main li:not(:last-child):after {
   content: "|";
   padding-right: 5px;
