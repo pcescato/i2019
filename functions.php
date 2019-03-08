@@ -373,7 +373,7 @@ function i2019_custom_styles() {
   width: 100%;
 }
 ";
-    $custom_style .= (1 != get_theme_mod('i2019_separators')) ? "" : '#menu-main li:not(:last-child):after {
+    $custom_style .= (1 != get_theme_mod('i2019_separators')) ? "" : 'ul.main-menu li:not(:last-child):after {
   content: "|";
   padding-right: 5px;
   color: currentcolor;
