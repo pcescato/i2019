@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: i2019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 09:37+0000\n"
-"PO-Revision-Date: 2019-03-10 09:41+0000\n"
+"POT-Creation-Date: 2019-03-10 14:18+0000\n"
+"PO-Revision-Date: 2019-03-10 14:20+0000\n"
 "Last-Translator: pcescato <pascalcescato@yahoo.fr>\n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
@@ -97,82 +97,94 @@ msgstr "Afficher le temps de lecture"
 
 #: functions.php:187
 msgid "Single Post Metas"
-msgstr "Méta Article"
+msgstr "Métas d'un article"
 
 #: functions.php:191
 msgid "Keep or remove Post Metas from Single Post."
 msgstr "Laissez ou supprimez les métas d'articles dans les articles."
 
-#: functions.php:202
+#: functions.php:197
+msgid "Scroll to Top"
+msgstr "Retour en haut"
+
+#: functions.php:201
+msgid "Add a Scroll to Top button."
+msgstr "Ajoute un bouton pour retourner en haut de la page."
+
+#: functions.php:212
+msgid "Scroll to Top Button"
+msgstr "Bouton de retour en haut"
+
+#: functions.php:226
 msgid "Make Content Full Width"
 msgstr "Affichage pleine largeur du contenu"
 
-#: functions.php:216
+#: functions.php:240
 msgid "Remove featured Image Margin"
 msgstr "Supprimer la marge sous l'image à la Une"
 
-#: functions.php:225
+#: functions.php:249
 msgid "Theme Colors"
 msgstr "Couleurs du thème"
 
-#: functions.php:229
+#: functions.php:253
 msgid "Define colors for text and background."
 msgstr "Définir les couleurs du texte et de l'arrière plan"
 
-#: functions.php:239
+#: functions.php:263
 msgid "Text color"
 msgstr "Couleur du texte"
 
-#: functions.php:248
+#: functions.php:272
 msgid "Background color"
 msgstr "Couleur de l'arrière plan"
 
-#: functions.php:258
+#: functions.php:282
 msgid "Set Separators between Menu Items"
 msgstr "Définir des séparateurs antre les éléments du menu"
 
-#: functions.php:272
+#: functions.php:296
 msgid "Remove Border around Logo"
 msgstr "Supprimer la bordure du logo au survol"
 
-#: functions.php:287 functions.php:329
+#: functions.php:311 functions.php:353
 msgid "Remove Author Post Meta"
 msgstr "Supprimer la méta Auteur"
 
-#: functions.php:301 functions.php:343
+#: functions.php:325 functions.php:367
 msgid "Remove Date Post Meta"
 msgstr "Supprimer la méta Date"
 
-#: functions.php:315 functions.php:357
+#: functions.php:339 functions.php:381
 msgid "Remove Comments Post Meta"
 msgstr "Supprimer la méta des commentaires"
 
-#: functions.php:371
+#: functions.php:395
 msgid "Remove Space After Title"
 msgstr "Supprimer l'espace après le titre"
 
 #. used between list items, there is a space after the comma.
-#: functions.php:453 functions.php:462
+#: functions.php:479 functions.php:488
 msgid ", "
 msgstr ", "
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories.
-#: functions.php:457
+#: functions.php:483
 msgid "Posted in"
 msgstr "Publié dans"
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags.
-#: functions.php:466
+#: functions.php:492
 msgid "Tags:"
 msgstr "Étiquettes :"
 
 #. %s: Name of current post. Only visible to screen readers.
-#: functions.php:481 template-parts/header/entry-header.php:40
+#: functions.php:507 template-parts/header/entry-header.php:40
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Éditer %s"
 
-#: functions.php:525
+#: functions.php:551
 #, php-format
 msgid ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s words - <i class=\"i2019-"
@@ -181,12 +193,12 @@ msgstr ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots - <i class=\"i2019-"
 "icon-stopwatch\"></i> Temps de lecture : %s mn"
 
-#: functions.php:527
+#: functions.php:553
 #, php-format
 msgid "<i class=\"i2019-icon-stopwatch\"></i> Reading time: %s mn"
 msgstr "<i class=\"i2019-icon-stopwatch\"></i> Temps de lecture : %s mn"
 
-#: functions.php:529
+#: functions.php:555
 #, php-format
 msgid "<i class=\"i2019-icon-info-circled-alt\"></i> %s words"
 msgstr "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots"

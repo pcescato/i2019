@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: i2019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 09:37+0000\n"
+"POT-Creation-Date: 2019-03-10 14:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -101,88 +101,100 @@ msgstr ""
 msgid "Keep or remove Post Metas from Single Post."
 msgstr ""
 
-#: functions.php:202
+#: functions.php:197
+msgid "Scroll to Top"
+msgstr ""
+
+#: functions.php:201
+msgid "Add a Scroll to Top button."
+msgstr ""
+
+#: functions.php:212
+msgid "Scroll to Top Button"
+msgstr ""
+
+#: functions.php:226
 msgid "Make Content Full Width"
 msgstr ""
 
-#: functions.php:216
+#: functions.php:240
 msgid "Remove featured Image Margin"
 msgstr ""
 
-#: functions.php:225
+#: functions.php:249
 msgid "Theme Colors"
 msgstr ""
 
-#: functions.php:229
+#: functions.php:253
 msgid "Define colors for text and background."
 msgstr ""
 
-#: functions.php:239
+#: functions.php:263
 msgid "Text color"
 msgstr ""
 
-#: functions.php:248
+#: functions.php:272
 msgid "Background color"
 msgstr ""
 
-#: functions.php:258
+#: functions.php:282
 msgid "Set Separators between Menu Items"
 msgstr ""
 
-#: functions.php:272
+#: functions.php:296
 msgid "Remove Border around Logo"
 msgstr ""
 
-#: functions.php:287 functions.php:329
+#: functions.php:311 functions.php:353
 msgid "Remove Author Post Meta"
 msgstr ""
 
-#: functions.php:301 functions.php:343
+#: functions.php:325 functions.php:367
 msgid "Remove Date Post Meta"
 msgstr ""
 
-#: functions.php:315 functions.php:357
+#: functions.php:339 functions.php:381
 msgid "Remove Comments Post Meta"
 msgstr ""
 
-#: functions.php:371
+#: functions.php:395
 msgid "Remove Space After Title"
 msgstr ""
 
 #. used between list items, there is a space after the comma.
-#: functions.php:453 functions.php:462
+#: functions.php:479 functions.php:488
 msgid ", "
 msgstr ""
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories.
-#: functions.php:457
+#: functions.php:483
 msgid "Posted in"
 msgstr ""
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags.
-#: functions.php:466
+#: functions.php:492
 msgid "Tags:"
 msgstr ""
 
 #. %s: Name of current post. Only visible to screen readers.
-#: functions.php:481 template-parts/header/entry-header.php:40
+#: functions.php:507 template-parts/header/entry-header.php:40
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr ""
 
-#: functions.php:525
+#: functions.php:551
 #, php-format
 msgid ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s words - <i class=\"i2019-"
 "icon-stopwatch\"></i> Reading time: %s mn"
 msgstr ""
 
-#: functions.php:527
+#: functions.php:553
 #, php-format
 msgid "<i class=\"i2019-icon-stopwatch\"></i> Reading time: %s mn"
 msgstr ""
 
-#: functions.php:529
+#: functions.php:555
 #, php-format
 msgid "<i class=\"i2019-icon-info-circled-alt\"></i> %s words"
 msgstr ""
