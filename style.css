@@ -7,7 +7,7 @@ Author: Pascal CESCATO
 Author URI: https://pascalcescato.gdn
 Description: Based on the Twenty Nineteen default Theme, i2019 offers additional customization options. It allows you to display your texts in full width, to delete the margin under the featured image, to personalize metadata displayed in archives and posts.
 Tags: one-column,flexible-header,full-width,accessibility-ready,custom-colors,custom-menu,custom-logo,editor-style,featured-images,footer-widgets,rtl-language-support,sticky-post,threaded-comments,translation-ready
-Version: 1.0.8
+Version: 1.1.0
 License:      GNU General Public License v2 or later
 License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 Updated: 2019-02-10 01:02:33
@@ -34,7 +34,7 @@ Text Domain:  i2019
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'i2019-font';
-    src: url('../font/i2019-font.svg?38971052#i2019-font') format('svg');
+    src: url('fonts/i2019-font.svg?38971052#i2019-font') format('svg');
   }
 }
 */

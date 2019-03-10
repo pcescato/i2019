@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: i2019\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-05 23:23+0000\n"
-"PO-Revision-Date: 2019-03-05 23:25+0000\n"
+"POT-Creation-Date: 2019-03-10 09:37+0000\n"
+"PO-Revision-Date: 2019-03-10 09:41+0000\n"
 "Last-Translator: pcescato <pascalcescato@yahoo.fr>\n"
 "Language-Team: Français\n"
 "Language: fr_FR\n"
@@ -12,37 +12,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.0; wp-5.1"
+"X-Loco-Version: 2.2.1; wp-5.1"
 
 #: footer.php:29
 msgid "Footer Menu"
 msgstr "Menu du pied de page"
 
-#: functions.php:45
+#: functions.php:48
 msgid "i2019 Options"
 msgstr "Réglages i2019"
 
-#: functions.php:46
+#: functions.php:49
 msgid "i2019 Theme Options."
 msgstr "Options du thème i2019."
 
-#: functions.php:51 functions.php:91
-msgid "Footer Content"
-msgstr "Contenu du pied de page"
+#: functions.php:54
+msgid "Footer Features"
+msgstr "Options du pied de page"
 
-#: functions.php:55
-msgid "Change Footer Content Here."
-msgstr "Modifiez le contenu du pied de page ici."
+#: functions.php:58
+msgid "Change Footer Features Here."
+msgstr "Modifier le pied de page."
 
-#: functions.php:61
+#: functions.php:64
 msgid "Infinite Scroll"
 msgstr "Défilement infini"
 
-#: functions.php:65
+#: functions.php:68
 msgid "Activate infinite scroll."
 msgstr "Activer le défilement infini."
 
+#: functions.php:73
+msgid "CSS Tweaks"
+msgstr "Ajustements CSS"
+
 #: functions.php:77
+msgid "All i2019 Theme CSS tweaks."
+msgstr "Tous les ajustements CSS."
+
+#: functions.php:83
+msgid "Archives Metas"
+msgstr "Métas des archives"
+
+#: functions.php:87
+msgid "Keep or remove Post Metas from Archives Pages."
+msgstr "Laissez ou supprimez les métas d'articles dans les pages d'archives."
+
+#: functions.php:93
+msgid "Single Post Content"
+msgstr "Contenu d'un article"
+
+#: functions.php:97
+msgid "Add extra content to single post."
+msgstr "Ajouter du contenu à l'article."
+
+#: functions.php:108
 msgid ""
 "Activate infinite scroll when checked. You must enable Infinite scroll in "
 "Jetpack > Settings > Writing: Load more posts in page with a button"
@@ -51,116 +75,104 @@ msgstr ""
 "> Réglages > Rédaction : <em>Charger les articles suivants grâce à un "
 "bouton</em>"
 
-#: functions.php:100
-msgid "CSS Tweaks"
-msgstr "Ajustements CSS"
+#: functions.php:122
+msgid "Right Align Footer Menu"
+msgstr "Alignement à droite du menu"
 
-#: functions.php:104
-msgid "All i2019 Theme CSS tweaks."
-msgstr "Tous les ajustements CSS."
+#: functions.php:136
+msgid "Footer Content"
+msgstr "Contenu du pied de page"
 
-#: functions.php:111
-msgid "Archives Metas"
-msgstr "Métas des archives"
-
-#: functions.php:115
-msgid "Keep or remove Post Metas from Archives Pages."
-msgstr "Laissez ou supprimez les métas d'articles dans les pages d'archives."
-
-#: functions.php:121
-msgid "Single Post Content"
-msgstr "Contenu d'un article"
-
-#: functions.php:125
-msgid "Add extra content to single post."
-msgstr "Ajouter du contenu à l'article."
-
-#: functions.php:137
+#: functions.php:150
 msgid "Display excerpt above content"
 msgstr "Afficher l'extrait au-dessus de l'article"
 
-#: functions.php:152
+#: functions.php:164
 msgid "Display post words count"
 msgstr "Afficher le nombre de mots"
 
-#: functions.php:167
+#: functions.php:178
 msgid "Display post time to read"
 msgstr "Afficher le temps de lecture"
 
-#: functions.php:176
+#: functions.php:187
 msgid "Single Post Metas"
 msgstr "Méta Article"
 
-#: functions.php:180
+#: functions.php:191
 msgid "Keep or remove Post Metas from Single Post."
 msgstr "Laissez ou supprimez les métas d'articles dans les articles."
 
-#: functions.php:192
+#: functions.php:202
 msgid "Make Content Full Width"
 msgstr "Affichage pleine largeur du contenu"
 
-#: functions.php:206
+#: functions.php:216
 msgid "Remove featured Image Margin"
 msgstr "Supprimer la marge sous l'image à la Une"
 
-#: functions.php:215
+#: functions.php:225
 msgid "Theme Colors"
 msgstr "Couleurs du thème"
 
-#: functions.php:219
+#: functions.php:229
 msgid "Define colors for text and background."
 msgstr "Définir les couleurs du texte et de l'arrière plan"
 
-#: functions.php:232
+#: functions.php:239
 msgid "Text color"
 msgstr "Couleur du texte"
 
-#: functions.php:237
+#: functions.php:248
 msgid "Background color"
 msgstr "Couleur de l'arrière plan"
 
-#: functions.php:248
+#: functions.php:258
 msgid "Set Separators between Menu Items"
 msgstr "Définir des séparateurs antre les éléments du menu"
 
-#: functions.php:262 functions.php:306
+#: functions.php:272
+msgid "Remove Border around Logo"
+msgstr "Supprimer la bordure du logo au survol"
+
+#: functions.php:287 functions.php:329
 msgid "Remove Author Post Meta"
 msgstr "Supprimer la méta Auteur"
 
-#: functions.php:277 functions.php:321
+#: functions.php:301 functions.php:343
 msgid "Remove Date Post Meta"
 msgstr "Supprimer la méta Date"
 
-#: functions.php:292 functions.php:336
+#: functions.php:315 functions.php:357
 msgid "Remove Comments Post Meta"
 msgstr "Supprimer la méta des commentaires"
 
-#: functions.php:351
+#: functions.php:371
 msgid "Remove Space After Title"
 msgstr "Supprimer l'espace après le titre"
 
 #. used between list items, there is a space after the comma.
-#: functions.php:421 functions.php:430
+#: functions.php:453 functions.php:462
 msgid ", "
 msgstr ", "
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of categories.
-#: functions.php:425
+#: functions.php:457
 msgid "Posted in"
 msgstr "Publié dans"
 
 #. 1: SVG icon. 2: posted in label, only visible to screen readers. 3: list of tags.
-#: functions.php:434
+#: functions.php:466
 msgid "Tags:"
 msgstr "Étiquettes :"
 
 #. %s: Name of current post. Only visible to screen readers.
-#: functions.php:449 template-parts/header/entry-header.php:40
+#: functions.php:481 template-parts/header/entry-header.php:40
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Éditer %s"
 
-#: functions.php:501
+#: functions.php:525
 #, php-format
 msgid ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s words - <i class=\"i2019-"
@@ -169,12 +181,12 @@ msgstr ""
 "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots - <i class=\"i2019-"
 "icon-stopwatch\"></i> Temps de lecture : %s mn"
 
-#: functions.php:503
+#: functions.php:527
 #, php-format
 msgid "<i class=\"i2019-icon-stopwatch\"></i> Reading time: %s mn"
 msgstr "<i class=\"i2019-icon-stopwatch\"></i> Temps de lecture : %s mn"
 
-#: functions.php:505
+#: functions.php:529
 #, php-format
 msgid "<i class=\"i2019-icon-info-circled-alt\"></i> %s words"
 msgstr "<i class=\"i2019-icon-info-circled-alt\"></i> %s mots"
