@@ -15,7 +15,6 @@
         <header class="entry-header">
             <?php get_template_part('template-parts/header/entry', 'header'); ?>
         </header>
-        <div class="entry-content">
         <?php endif; ?>
         <div class="entry-content">
 
@@ -25,7 +24,7 @@
             if (get_theme_mod('i2019_show_excerpt') == 1):
                 ?>
                 <div class="entry-excerpt">
-                    <?php echo get_the_excerpt(); ?> 
+                    <?php echo get_the_excerpt(); ?>
                 </div>
             <?php endif;
             ?>

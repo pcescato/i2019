@@ -89,6 +89,16 @@ function i2019_customize_register($wp_customize) {
     );
 
     $wp_customize->add_section(
+            'i2019_date_options', array(
+        'title' => __('Dates Options', 'i2019'),
+        'panel' => 'i2019_options',
+        'priority' => 2,
+        'capability' => 'edit_theme_options',
+        'description' => __('Which date do you want to display for posts?', 'i2019'),
+            )
+    );
+
+    $wp_customize->add_section(
             'i2019_content_single', array(
         'title' => __('Single Post Content', 'i2019'),
         'panel' => 'i2019_options',
@@ -97,6 +107,54 @@ function i2019_customize_register($wp_customize) {
         'description' => __('Add extra content to single post.', 'i2019'),
             )
     );
+
+    $wp_customize->add_section(
+            'i2019_metas_single', array(
+        'title' => __('Single Post Metas', 'i2019'),
+        'panel' => 'i2019_options',
+        'priority' => 2,
+        'capability' => 'edit_theme_options',
+        'description' => __('Keep or remove Post Metas from Single Post.', 'i2019'),
+            )
+    );
+
+    $wp_customize->add_section(
+            'i2019_scroll', array(
+        'title' => __('Scroll to Top', 'i2019'),
+        'panel' => 'i2019_options',
+        'priority' => 2,
+        'capability' => 'edit_theme_options',
+        'description' => __('Add a Scroll to Top button.', 'i2019'),
+            )
+    );
+
+    $wp_customize->add_setting('i2019_date_published', array(
+        'default' => 0,
+        'sanitize_callback' => 'sanitize_checkbox'
+            )
+    );
+
+    $wp_customize->add_control('i2019_date_published', array(
+        'label' => __('Date Published', 'i2019'),
+        'section' => 'i2019_date_options',
+        'settings' => 'i2019_date_published',
+        'type' => 'checkbox',
+        'priority' => 1
+    ));
+
+    $wp_customize->add_setting('i2019_date_updated', array(
+        'default' => 0,
+        'sanitize_callback' => 'sanitize_checkbox'
+            )
+    );
+
+    $wp_customize->add_control('i2019_date_updated', array(
+        'label' => __('Last Update', 'i2019'),
+        'section' => 'i2019_date_options',
+        'settings' => 'i2019_date_updated',
+        'type' => 'checkbox',
+        'priority' => 1
+    ));
 
     $wp_customize->add_setting('i2019_infinite_scroll', array(
         'default' => 0,
@@ -181,26 +239,6 @@ function i2019_customize_register($wp_customize) {
         'type' => 'checkbox',
         'priority' => 1
     ));
-
-    $wp_customize->add_section(
-            'i2019_metas_single', array(
-        'title' => __('Single Post Metas', 'i2019'),
-        'panel' => 'i2019_options',
-        'priority' => 2,
-        'capability' => 'edit_theme_options',
-        'description' => __('Keep or remove Post Metas from Single Post.', 'i2019'),
-            )
-    );
-
-    $wp_customize->add_section(
-            'i2019_scroll', array(
-        'title' => __('Scroll to Top', 'i2019'),
-        'panel' => 'i2019_options',
-        'priority' => 2,
-        'capability' => 'edit_theme_options',
-        'description' => __('Add a Scroll to Top button.', 'i2019'),
-            )
-    );
 
     $wp_customize->add_setting('i2019_scroll_to_top', array(
         'default' => 0,
@@ -406,7 +444,9 @@ function sanitize_checkbox($input) {
 
 function i2019_custom_styles() {
 
-    $custom_style = 'body {color:' . get_theme_mod('i2019_text_color', '#11171e') . '; background-color:' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}';
+    $custom_style = 'body {color:' . get_theme_mod('i2019_text_color', '#11171e') . '; background-color:' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}
+    .site-header.featured-image .custom-logo-link {background: ' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}
+    .notpublished {display: none}';
 
     $custom_style .= (1 != get_theme_mod('i2019_scroll_to_top')) ? '' : 'html{scroll-behavior:smooth}body{position:relative}.scrolltop-wrap{box-sizing:border-box;position:absolute;top:12rem;right:2rem;bottom:0;pointer-events:none;-webkit-backface-visibility:hidden;backface-visibility:hidden}.scrolltop-wrap #scrolltop-bg{fill:currentcolor}.scrolltop-wrap #scrolltop-arrow{fill:white}.scrolltop-wrap a:hover #scrolltop-bg{fill:currentcolor}.scrolltop-wrap a:hover #scrolltop-arrow{fill:white}@supports (-moz-appearance:meterbar){.scrolltop-wrap{clip:rect(0,3rem,auto,0)}}.scrolltop-wrap a{position:fixed;position:-webkit-sticky;position:sticky;top:-5rem;margin-bottom:-5rem;-webkit-transform:translateY(100vh);transform:translateY(100vh);-webkit-backface-visibility:hidden;backface-visibility:hidden;display:inline-block;text-decoration:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:all;outline:none;overflow:hidden}.scrolltop-wrap a svg{display:block;border-radius:50%;width:100%;height:100%}.scrolltop-wrap a svg path{transition:all 0.1s}.scrolltop-wrap a #scrolltop-arrow{-webkit-transform:scale(.66);transform:scale(.66);-webkit-transform-origin:center;transform-origin:center}@media print{.scrolltop-wrap{display:none!important}}';
 
@@ -470,10 +510,10 @@ if (!function_exists('i2019_entry_footer')) :
 
             // Posted on
             if (!is_single() && $remove_date_from_archive == 0)
-                twentynineteen_posted_on();
+                i2019_posted_on();
 
             if (is_single() && $remove_date == 0)
-                twentynineteen_posted_on();
+                i2019_posted_on();
 
             /* translators: used between list items, there is a space after the comma. */
             $categories_list = get_the_category_list(__(', ', 'i2019'));
@@ -557,3 +597,35 @@ function i2019_display_post_extra_metas() {
 
     return $output;
 }
+
+if ( ! function_exists( 'i2019_posted_on' ) ) :
+	/**
+	 * Prints HTML with meta information for the current post-date/time.
+	 */
+	function i2019_posted_on() {
+
+    $display_date_published = ( get_theme_mod('i2019_date_published') == 1 ) ? '' : 'not';
+    $display_date_updated  = ( get_theme_mod('i2019_date_updated') == 1 ) ? ' published' : '';
+    $updatetext = ( empty( $display_date_published ) && !empty( $display_date_updated ) ) ? ' ' . __( 'updated on', 'i2019' ) . ' ' : '';
+
+		$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+			$time_string = '<time class="entry-date ' . $display_date_published . 'published" datetime="%1$s">%2$s</time><time class="updated' . $display_date_updated . '" datetime="%3$s">' . $updatetext . '%4$s</time>';
+		}
+
+		$time_string = sprintf(
+			$time_string,
+			esc_attr( get_the_date( DATE_W3C ) ),
+			esc_html( get_the_date() ),
+			esc_attr( get_the_modified_date( DATE_W3C ) ),
+			esc_html( get_the_modified_date() )
+		);
+
+		printf(
+			'<span class="posted-on">%1$s<a href="%2$s" rel="bookmark">%3$s</a></span>',
+			twentynineteen_get_icon_svg( 'watch', 16 ),
+			esc_url( get_permalink() ),
+			$time_string
+		);
+	}
+endif;

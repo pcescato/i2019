@@ -20,7 +20,7 @@ $discussion = ! is_page() && twentynineteen_can_show_post_thumbnail() ? twentyni
 <?php if( ($remove_author + $remove_comments + $remove_date) != 0 || current_user_can('edit_posts') ) ?>
 <div class="entry-meta">
 	<?php if($remove_author == 0) twentynineteen_posted_by(); ?>
-	<?php if($remove_date == 0) twentynineteen_posted_on(); ?>
+	<?php if($remove_date == 0) i2019_posted_on(); ?>
         <?php if($remove_comments == 0): ?>
 	<span class="comment-count">
 		<?php
