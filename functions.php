@@ -68,6 +68,7 @@ function i2019_customize_register($wp_customize) {
         'description' => __('Activate infinite scroll.', 'i2019'),
             )
     );
+
     $wp_customize->add_section(
             'i2019_css_tweaks', array(
         'title' => __('CSS Tweaks', 'i2019'),
@@ -79,12 +80,32 @@ function i2019_customize_register($wp_customize) {
     );
 
     $wp_customize->add_section(
+            'i2019_comments_follow', array(
+        'title' => __('Comments dofollow', 'i2019'),
+        'panel' => 'i2019_options',
+        'priority' => 2,
+        'capability' => 'edit_theme_options',
+        'description' => __('Allow dofollow for comments.', 'i2019'),
+            )
+    );
+
+    $wp_customize->add_section(
             'i2019_metas_archive', array(
         'title' => __('Archives Metas', 'i2019'),
         'panel' => 'i2019_options',
         'priority' => 2,
         'capability' => 'edit_theme_options',
         'description' => __('Keep or remove Post Metas from Archives Pages.', 'i2019'),
+            )
+    );
+
+    $wp_customize->add_section(
+            'i2019_google_fonts', array(
+        'title' => __('Google Fonts', 'i2019'),
+        'panel' => 'i2019_options',
+        'priority' => 2,
+        'capability' => 'edit_theme_options',
+        'description' => __('Set Google Fonts.', 'i2019'),
             )
     );
 
@@ -141,6 +162,79 @@ function i2019_customize_register($wp_customize) {
         'type' => 'checkbox',
         'priority' => 1
     ));
+
+    $wp_customize->add_setting('i2019_comments_following', array(
+        'default' => 0,
+        'sanitize_callback' => 'sanitize_checkbox'
+            )
+    );
+
+    $wp_customize->add_control('i2019_comments_following', array(
+        'label' => __('Remove nofollow on comments links', 'i2019'),
+        'section' => 'i2019_comments_follow',
+        'settings' => 'i2019_comments_following',
+        'type' => 'checkbox',
+        'priority' => 1
+    ));
+
+    $googlefonts = i2019_get_gfonts();
+
+    $wp_customize->add_setting('i2019_use_gfonts', array(
+        'default' => 0,
+        'sanitize_callback' => 'sanitize_checkbox'
+            )
+    );
+
+    $wp_customize->add_control('i2019_use_gfonts', array(
+        'label' => __('Use Google Fonts', 'i2019'),
+        'description' => __('You have to enable Google Fonts in order to use them.', 'i2019'),
+        'section' => 'i2019_google_fonts',
+        'settings' => 'i2019_use_gfonts',
+        'type' => 'checkbox',
+        'priority' => 1
+    ));
+
+    $wp_customize->add_setting( 'i2019_gfont_title', array(
+      'capability' => 'edit_theme_options',
+      //'sanitize_callback' => 'themeslug_sanitize_select',
+      'default' => '',
+    ) );
+
+    $wp_customize->add_control( 'i2019_gfont_title', array(
+      'type' => 'select',
+      'section' => 'i2019_google_fonts',
+      'label' => __( 'H1 / Title Font', 'i2019' ),
+      'description' => __( 'Used for Post / Page Title', 'i2019' ),
+      'choices' => $googlefonts['title'],
+    ) );
+
+    $wp_customize->add_setting( 'i2019_gfont_subtitles', array(
+      'capability' => 'edit_theme_options',
+      //'sanitize_callback' => 'themeslug_sanitize_select',
+      'default' => '',
+    ) );
+
+    $wp_customize->add_control( 'i2019_gfont_subtitles', array(
+      'type' => 'select',
+      'section' => 'i2019_google_fonts',
+      'label' => __( 'Subtitles (h2 to h6) Font', 'i2019' ),
+      'description' => __( 'Used for titles in your post / page.', 'i2019' ),
+      'choices' => $googlefonts['subtitles'],
+    ) );
+
+    $wp_customize->add_setting( 'i2019_gfont_text', array(
+      'capability' => 'edit_theme_options',
+      //'sanitize_callback' => 'themeslug_sanitize_select',
+      'default' => '',
+    ) );
+
+    $wp_customize->add_control( 'i2019_gfont_text', array(
+      'type' => 'select',
+      'section' => 'i2019_google_fonts',
+      'label' => __( 'Text Font', 'i2019' ),
+      'description' => __( 'Used for paragraphs, lists, quotes…', 'i2019' ),
+      'choices' => $googlefonts['text'],
+    ) );
 
     $wp_customize->add_setting('i2019_date_updated', array(
         'default' => 0,
@@ -442,11 +536,182 @@ function sanitize_checkbox($input) {
     return ( $input === true ) ? true : false;
 }
 
+function i2019_commentdofollow($text) {
+  $url = str_replace( array( 'http:', 'https:', 'www.' ), array( '', '', '' ), site_url() );
+	if ( stripos( $text, $url ) === false ):
+		$text = str_ireplace('<a', '<a target="_blank"', $text);
+		$text = str_replace('nofollow', 'noopener', $text);
+  	else:
+		$text = str_replace('nofollow', '', $text);
+	endif;
+	return $text;
+}
+if( 1 == get_theme_mod( 'i2019_comments_following' ) ):
+  add_filter('comment_text', 'i2019_commentdofollow');
+  add_filter('get_comment_author_link', 'i2019_remove_nofollow', 15);
+endif;
+
+remove_filter('pre_comment_content', 'wp_rel_nofollow', 15);
+function i2019_remove_nofollow($string){
+  $url = str_replace( array( 'http:', 'https:', 'www.' ), array( '', '', '' ), site_url() );
+	$string = str_ireplace(' nofollow', '', $string);
+    if ( stripos( $string, $url ) === false ) $string = str_ireplace('<a', '<a target="_blank"', $string);
+	return $string;
+}
+
+
+$gfont['title'] = get_theme_mod('i2019_gfont_title');
+$gfont['subtitles'] = get_theme_mod('i2019_gfont_subtitles');
+$gfont['text'] = get_theme_mod('i2019_gfont_text');
+
 function i2019_custom_styles() {
 
-    $custom_style = 'body {color:' . get_theme_mod('i2019_text_color', '#11171e') . '; background-color:' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}
-    .site-header.featured-image .custom-logo-link {background: ' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}
-    .notpublished {display: none}';
+  global $gfont;
+
+  $e = explode ( ':', $gfont['title'] );
+  $gfont['title'] = str_replace ( '+', ' ', $e[0] );
+  $e = explode ( ':', $gfont['subtitles'] );
+  $gfont['subtitles'] = str_replace ( '+', ' ', $e[0] );
+  $gfont['text'] = str_replace ( '+', ' ',   $gfont['text'] );
+
+    $custom_style = '.wp-block-preformatted, blockquote p, .wp-block-verse, body, div:not(.site-branding) > .site-title > a:link, div:not(.site-branding) > .site-title > a:visited {color:' . get_theme_mod('i2019_text_color', '#11171e') . '; background-color:' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}
+    .site-header.featured-image .custom-logo-link {background: ' . get_theme_mod('i2019_background_color', '#f5f9fc') . '}';
+
+    ///
+
+    /*
+.main-navigation button {
+  font-family: '" . $gfont['text'] . "';
+  font-weight: 700;
+  line-height: 1.2;
+}
+.comment-navigation .nav-previous,
+.comment-navigation .nav-next {
+  min-width: 50%;
+  width: 100%;
+  font-family: '" . $gfont['text'] . "';
+  font-weight: bold;
+}
+.comment-list .pingback .comment-body,
+.comment-list .trackback .comment-body {
+  color: #767676;
+  font-family: '" . $gfont['text'] . "';
+  font-size: 0.71111em;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.comment-list .pingback .comment-body .comment-edit-link,
+.comment-list .trackback .comment-body .comment-edit-link {
+  color: #767676;
+  font-family: '" . $gfont['text'] . "';
+  font-weight: 500;
+}
+.comment-form .comment-notes,
+.comment-form label {
+  font-family: '" . $gfont['text'] . "';
+  font-size: 0.71111em;
+  color: #767676;
+}
+.widget_archive ul li,
+.widget_categories ul li,
+.widget_meta ul li,
+.widget_nav_menu ul li,
+.widget_pages ul li,
+.widget_recent_comments ul li,
+.widget_recent_entries ul li,
+.widget_rss ul li {
+  color: #767676;
+  font-family: '" . $gfont['subtitles'] . "';
+  font-size: calc(22px * 1.125);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.widget_tag_cloud .tagcloud {
+  font-family: '" . $gfont['text'] . "';
+  font-weight: 700;
+}
+.entry .entry-content .wp-block-button .wp-block-button__link {
+  font-size: 0.88889em;
+  font-family: '" . $gfont['text'] . "';
+  line-height: 1.2;
+  font-weight: bold;
+}
+.entry .entry-content .wp-block-archives li,
+.entry .entry-content .wp-block-categories li,
+.entry .entry-content .wp-block-latest-posts li {
+  color: #767676;
+  font-family: '" . $gfont['subtitles'] . "';
+  font-size: calc(22px * 1.125);
+  font-weight: bold;
+  line-height: 1.2;
+}
+.entry .entry-content .has-drop-cap:not(:focus):first-letter {
+  font-family: '" . $gfont['text'] . "';
+  font-size: 3.375em;
+  line-height: 1;
+  font-weight: bold;
+}
+.entry .entry-content .wp-block-pullquote cite {
+  font-family: '" . $gfont['text'] . "';
+  line-height: 1.6;
+  color: #767676;
+  font-size: calc(1rem / (1.25 * 1.125));
+}
+.entry .entry-content .wp-block-cover-image .wp-block-cover-image-text,
+.entry .entry-content .wp-block-cover-image .wp-block-cover-text,
+.entry .entry-content .wp-block-cover-image h2,
+.entry .entry-content .wp-block-cover .wp-block-cover-image-text,
+.entry .entry-content .wp-block-cover .wp-block-cover-text,
+.entry .entry-content .wp-block-cover h2 {
+  font-family: '" . $gfont['subtitle'] . "';
+  font-size: 1.6875em;
+  font-weight: bold;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.entry .entry-content .wp-block-file {
+  font-family: '" . $gfont['text'] . "';
+}
+.entry .entry-content .wp-block-file .wp-block-file__button {
+  background: #0073aa;
+  font-size: 22px;
+  font-family: '" . $gfont['text'] . "';
+  line-height: 1.2;
+  font-weight: bold;
+  color: #fff;
+}
+.entry .entry-content .wp-block-latest-comments .wp-block-latest-comments__comment-meta {
+  font-family: '" . $gfont['text'] . "';
+  font-weight: bold;
+}
+.wp-caption-text {
+  color: #767676;
+  font-size: 0.71111em;
+  font-family: '" . $gfont['text'] . "';
+  line-height: 1.6;
+}
+.gallery-caption {
+  font-size: 0.71111em;
+  font-family: '" . $gfont['text'] . "';
+  line-height: 1.6;
+}";
+*/
+
+$custom_style .= "#colophon .site-info, .entry .entry-meta, .entry .entry-footer, .archive .page-header .page-title, .search .page-header .page-title, .error404 .page-header .page-title, .site-description, .comment-list .pingback .comment-body, .comment-list .trackback .comment-body, .comment-list .pingback .comment-body .comment-edit-link, .comment-list .trackback .comment-body .comment-edit-link,.comment-form .comment-notes, .comment-form label,.widget_archive ul li, .widget_categories ul li, .widget_meta ul li, .widget_nav_menu ul li, .widget_pages ul li, .widget_recent_comments ul li, .widget_recent_entries ul li, .widget_rss ul li,.entry .entry-content .wp-block-archives li, .entry .entry-content .wp-block-categories li, .entry .entry-content .wp-block-latest-posts li ,.entry .entry-content .wp-block-pullquote cite, .wp-caption-text {color: #" . i2019_set_lighten() . "}
+.comments-area .comments-title-wrap .comments-title:before, .entry .entry-title:before, h1:not(.site-title):before, h2:before {background: #" . i2019_set_lighten() . "}
+";
+
+if( 1 == get_theme_mod( 'i2019_use_gfonts' ) ):
+$custom_style .= "#commentform *,.entry-meta, .entry-footer, nav a, .site-info, .entry-content, .entry-excerpt, table {font-family: '".$gfont['text']."'}
+pre.wp-block-verse {font-family: '".$gfont['text']."' !important}
+.entry .entry-content .wp-block-audio figcaption, .entry .entry-content .wp-block-video figcaption, .entry .entry-content .wp-block-image figcaption, .entry .entry-content .wp-block-gallery .blocks-gallery-image figcaption, .entry .entry-content .wp-block-gallery .blocks-gallery-item figcaption {font-family: '" . $gfont['text'] . "';}
+h1.page-title, h1.page-title > span.page-description, h1, .site-title, .site-description {font-family: '".$gfont['title']."'}
+h2, h3, h4, h5, h6, section.widget_recent_entries > ul > li {font-family: '".$gfont['subtitles']."' !important}";
+endif;
 
     $custom_style .= (1 != get_theme_mod('i2019_scroll_to_top')) ? '' : 'html{scroll-behavior:smooth}body{position:relative}.scrolltop-wrap{box-sizing:border-box;position:absolute;top:12rem;right:2rem;bottom:0;pointer-events:none;-webkit-backface-visibility:hidden;backface-visibility:hidden}.scrolltop-wrap #scrolltop-bg{fill:currentcolor}.scrolltop-wrap #scrolltop-arrow{fill:white}.scrolltop-wrap a:hover #scrolltop-bg{fill:currentcolor}.scrolltop-wrap a:hover #scrolltop-arrow{fill:white}@supports (-moz-appearance:meterbar){.scrolltop-wrap{clip:rect(0,3rem,auto,0)}}.scrolltop-wrap a{position:fixed;position:-webkit-sticky;position:sticky;top:-5rem;margin-bottom:-5rem;-webkit-transform:translateY(100vh);transform:translateY(100vh);-webkit-backface-visibility:hidden;backface-visibility:hidden;display:inline-block;text-decoration:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:all;outline:none;overflow:hidden}.scrolltop-wrap a svg{display:block;border-radius:50%;width:100%;height:100%}.scrolltop-wrap a svg path{transition:all 0.1s}.scrolltop-wrap a #scrolltop-arrow{-webkit-transform:scale(.66);transform:scale(.66);-webkit-transform-origin:center;transform-origin:center}@media print{.scrolltop-wrap{display:none!important}}';
 
@@ -576,6 +841,24 @@ function i2019_infinite_scroll() {
     ));
 }
 
+if( ! empty ( $gfont ) && 1 == get_theme_mod( 'i2019_use_gfonts' ) ):
+  function i2019_add_google_fonts() {
+    global $gfont;
+    $ttl = explode (':', $gfont['title']);
+    $sttl = explode (':', $gfont['subtitles']);
+    $fonts[$ttl[0]] = $ttl[1];
+    $fonts[$sttl[0]] = ( empty ( $fonts[$sttl[0]] ) ) ? $sttl[1] : $fonts[$sttl[0]] . ',' . $sttl[1];
+    $fonts[$gfont['text']] = ( empty ( $fonts[$gfont['text']] ) ) ? '' : $fonts[$gfont['text']] . ',400';
+    $line = array();
+    foreach ( $fonts as $nx => $gf ):
+      $size = ( !empty ( $gf ) ) ? ':' . $gf : '';
+      $line[] = $nx . $size;
+    endforeach;
+    wp_enqueue_style( 'i2019-google-fonts', 'https://fonts.googleapis.com/css?family=' . implode ('|', $line) , false );
+  }
+  add_action( 'wp_enqueue_scripts', 'i2019_add_google_fonts' );
+endif;
+
 function i2019_display_post_extra_metas() {
 
     if (get_theme_mod('i2019_show_time_to_read') == 1) :
@@ -603,7 +886,6 @@ if ( ! function_exists( 'i2019_posted_on' ) ) :
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
 	function i2019_posted_on() {
-
     $display_date_published = ( get_theme_mod('i2019_date_published') == 1 ) ? '' : 'not';
     $display_date_updated  = ( get_theme_mod('i2019_date_updated') == 1 ) ? ' published' : '';
     $updatetext = ( empty( $display_date_published ) && !empty( $display_date_updated ) ) ? ' ' . __( 'updated on', 'i2019' ) . ' ' : '';
@@ -629,3 +911,70 @@ if ( ! function_exists( 'i2019_posted_on' ) ) :
 		);
 	}
 endif;
+
+function i2019_get_gfonts(){
+
+  $gfonts['title'] = get_transient ('i2019_gfonts_title');
+  $gfonts['subtitles'] = get_transient ('i2019_gfonts_subtitles');
+  $gfonts['text'] = get_transient ('i2019_gfonts_text');
+
+  if ( false === $gfonts['title'] || false === $gfonts['subtitles'] || false === $gfonts['text'] ):
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyAHooQBdaRNlzyIuIrMhWOcF_qsirYwue4&sort=alpha");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $googlefonts = json_decode( curl_exec($ch) );
+
+    $gfonts['title'] = array();
+    $gfonts['subtitles'] = array();
+    $gfonts['text'] = array();
+
+    foreach ( $googlefonts->items as $font ):
+
+      $family = str_replace ( ' ', '+', $font->family );
+      $variants = $font->variants;
+
+      if (in_array('700', $variants)):
+        $bold = ':700';
+      elseif (in_array('600', $variants)):
+        $bold= ':600';
+      elseif (in_array('500', $variants)):
+        $bold= ':500';
+      else:
+        $bold = '';
+      endif;
+
+      if (in_array('600', $variants)):
+        $semibold= ':600';
+      elseif (in_array('500', $variants)):
+        $semibold= ':500';
+      else:
+        $semibold = '';
+      endif;
+
+      $gfonts['title'][$family . $bold] = $font->family;
+      $gfonts['subtitles'][$family . $semibold] = $font->family;
+      $gfonts['text'][$family] = $font->family;
+
+    endforeach;
+
+    set_transient ('i2019_gfonts_title', $gfonts['title'], WEEK_IN_SECONDS);
+    set_transient ('i2019_gfonts_subtitles', $gfonts['subtitles'], WEEK_IN_SECONDS);
+    set_transient ('i2019_gfonts_text', $gfonts['text'], WEEK_IN_SECONDS);
+    curl_close($ch);
+  endif;
+  return $gfonts;
+}
+
+function i2019_set_lighten () {
+  $normal = get_transient('i2019_normal_color');
+  $lighten = get_transient('i2019_lighten_color');
+  $color = get_theme_mod('i2019_text_color', '#11171e');
+  if ( empty ( $lighten ) || $color != $normal ) {
+    require_once get_stylesheet_directory() . '/inc/Color.php';
+    $basis = new Color( $color );
+    $lighten = $basis->lighten(20);
+    set_transient ('i2019_lighten_color', $lighten, YEAR_IN_SECONDS);
+    set_transient ('i2019_normal_color', $color, YEAR_IN_SECONDS);
+  }
+  return $lighten;
+}

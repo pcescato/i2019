@@ -18,6 +18,10 @@ Text Domain:  i2019
     font-weight: bolder;
 }
 
+.notpublished {
+  display: none
+}
+
 @font-face {
   font-family: 'i2019-font';
   src: url('fonts/i2019-font.eot');
