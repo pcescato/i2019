@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Notes - Note App{% endblock %}
+
+{% block content %}
+  <h1 class="mt-4" id="create-note-form-header">Create Note</h1>
+  <form method="POST" action="{{ url_for('index') }}" id="create-note-form">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.title.label(class="form-control-label") }}
+      {{ form.title(class="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ form.content.label(class="form-control-label") }}
+      {{ form.content(class="form-control", rows="5") }}
+    </div>
+    <div class="form-group">
+      {{ form.tags.label(class="form-control-label") }}
+      {{ form.tags(class="form-control") }}
+      <small class="form-text text-muted">Comma-separated values, e.g., personal, work</small>
+    </div>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+
+  <hr class="my-4">
+
+  <h2>Existing Notes</h2>
+  {% if notes %}
+    <ul class="list-group">
+      {% for note in notes %}
+        <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><a href="{{ url_for('view_note', note_id=note.id) }}">{{ note.title }}</a></h5>
+            <small>Created: {{ note.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+          </div>
+          <p class="mb-1">
+            {% if note.tags %}
+              Tags:
+              {% for tag in note.tags %}
+                <a href="{{ url_for('notes_by_tag', tag_name=tag.name) }}" class="badge badge-secondary">{{ tag.name }}</a>
+              {% endfor %}
+            {% else %}
+              <small class="text-muted">No tags</small>
+            {% endif %}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No notes yet. Create one above!</p>
+  {% endif %}
+{% endblock %}

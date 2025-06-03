@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ note.title }} - Note App{% endblock %}
+
+{% block content %}
+  <h1 class="mt-4">Edit Note: {{ note.title }}</h1>
+  <form method="POST" action="{{ url_for('main.edit_note', note_id=note.id) }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.title.label(class="form-control-label") }}
+      {{ form.title(class="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ form.content.label(class="form-control-label") }}
+      {{ form.content(class="form-control", rows="10") }}
+    </div>
+    <div class="form-group">
+      {{ form.tags.label(class="form-control-label") }}
+      {{ form.tags(class="form-control") }}
+      <small class="form-text text-muted">Comma-separated values, e.g., personal, work</small>
+    </div>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-primary") }}
+      <a href="{{ url_for('main.view_note', note_id=note.id) }}" class="btn btn-secondary ml-2">Cancel</a>
+    </div>
+  </form>
+{% endblock %}

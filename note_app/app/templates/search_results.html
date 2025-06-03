@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results - Note App{% endblock %}
+
+{% block content %}
+  <h1 class="mt-4">Search Results</h1>
+
+  <form method="GET" action="{{ url_for('search') }}" class="form-inline mt-3 mb-3">
+    {{ search_form.hidden_tag() }}
+    <div class="form-group mr-2">
+      {{ search_form.query.label(class="sr-only") }}
+      {{ search_form.query(class="form-control", placeholder="Enter search query...") }}
+    </div>
+    <div class="form-group">
+      {{ search_form.submit(class="btn btn-primary") }}
+    </div>
+  </form>
+
+  {% if notes %}
+    <h2>Results for "{{ query }}"</h2>
+    <ul class="list-group">
+      {% for note in notes %}
+        <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><a href="{{ url_for('view_note', note_id=note.id) }}">{{ note.title }}</a></h5>
+            <small>Created: {{ note.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+          </div>
+          <p class="mb-1">
+            {% if note.tags %}
+              Tags:
+              {% for tag in note.tags %}
+                <a href="{{ url_for('notes_by_tag', tag_name=tag.name) }}" class="badge badge-secondary">{{ tag.name }}</a>
+              {% endfor %}
+            {% else %}
+              <small class="text-muted">No tags</small>
+            {% endif %}
+          </p>
+          {# Snippet of content - consider highlighting search terms later if possible #}
+          <p class="mb-1">{{ (note.content[:200] + '...') | md_to_html | safe if note.content | length > 200 else note.content | md_to_html | safe }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% elif query %}
+    <p>No results found for "{{ query }}".</p>
+  {% else %}
+    <p>Please enter a search term above.</p>
+  {% endif %}
+
+{% endblock %}

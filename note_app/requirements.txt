@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+Markdown
+Flask-WhooshAlchemyPlus
+nltk
+sumy
+scikit-learn
+sentence-transformers
+Flask-Login
+Werkzeug
+email-validator

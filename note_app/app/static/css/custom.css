@@ -1,0 +1,105 @@
+/* Custom CSS for NoteApp - Minimalist Theme */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #212529; /* Bootstrap default dark text */
+}
+
+.container {
+    max-width: 960px; /* Limit content width for better readability */
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Forms */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Notes List */
+.list-group-item {
+    margin-bottom: 0.5rem; /* Add some space between note items */
+    border: 1px solid rgba(0,0,0,.125); /* Default border */
+}
+.list-group-item h5 a {
+    color: #0056b3; /* Darker blue for note titles */
+}
+.list-group-item h5 a:hover {
+    text-decoration: underline;
+}
+
+/* Note Detail */
+.card-header h1 {
+    font-size: 2rem; /* Slightly smaller than default h1 for card context */
+}
+.card-body div { /* For rendered markdown content */
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.card-body div p {
+    margin-bottom: 1rem;
+}
+.card-body div h1, .card-body div h2, .card-body div h3, .card-body div h4, .card-body div h5, .card-body div h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+.card-body div pre {
+    background-color: #e9ecef;
+    padding: 1rem;
+    border-radius: 0.25rem;
+}
+.card-body div code {
+    font-size: 0.9em;
+    background-color: #e9ecef;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2rem;
+}
+.card-body div pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+/* Tags */
+.badge {
+    font-size: 0.85em;
+    padding: 0.4em 0.6em;
+}
+.badge-info { /* For note detail tags */
+    background-color: #17a2b8;
+}
+.badge-secondary { /* For list view tags */
+    background-color: #6c757d;
+}
+
+/* Flash Messages */
+.alert {
+    margin-top: 1rem;
+}

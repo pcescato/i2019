@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Notes tagged "{{ tag_name }}" - Note App{% endblock %}
+
+{% block content %}
+  <h1 class="mt-4">Notes tagged with <span class="badge badge-primary">{{ tag_name }}</span></h1>
+
+  {% if notes %}
+    <ul class="list-group mt-3">
+      {% for note in notes %}
+        <li class="list-group-item">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><a href="{{ url_for('view_note', note_id=note.id) }}">{{ note.title }}</a></h5>
+            <small>Created: {{ note.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+          </div>
+          <p class="mb-1">
+            {% if note.tags %}
+              Tags:
+              {% for t in note.tags %}
+                <a href="{{ url_for('notes_by_tag', tag_name=t.name) }}" class="badge badge-secondary">{{ t.name }}</a>
+              {% endfor %}
+            {% else %}
+              <small class="text-muted">No tags</small>
+            {% endif %}
+          </p>
+          {# Optionally, display a snippet of the content, rendered from Markdown #}
+          {# <p class="mb-1">{{ (note.content[:150] + '...') | md_to_html | safe if note.content | length > 150 else note.content | md_to_html | safe }}</p> #}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="mt-3">No notes found with this tag.</p>
+  {% endif %}
+  <a href="{{ url_for('index') }}" class="btn btn-link mt-3">&larr; Back to all Notes</a>
+{% endblock %}
