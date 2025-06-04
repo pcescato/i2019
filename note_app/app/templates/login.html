@@ -6,10 +6,11 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h1 class="mt-4 mb-4 text-center">Login</h1>
-        <form method="POST" action="{{ url_for('login') }}{% if request.args.get('next') %}?next={{ request.args.get('next') | urlencode }}{% endif %}" novalidate>
+        <form method="POST" action="{{ url_for('main.login') }}{% if request.args.get('next') %}?next={{ request.args.get('next') | urlencode }}{% endif %}" novalidate>
             {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.username_or_email.label(class="form-control-label") }}
+
+            <div class="form-group mb-3">
+                {{ form.username_or_email.label(class="form-label") }}
                 {{ form.username_or_email(class="form-control" + (" is-invalid" if form.username_or_email.errors else "")) }}
                 {% if form.username_or_email.errors %}
                     <div class="invalid-feedback">
@@ -17,8 +18,9 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.password.label(class="form-control-label") }}
+
+            <div class="form-group mb-3">
+                {{ form.password.label(class="form-label") }}
                 {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else "")) }}
                 {% if form.password.errors %}
                     <div class="invalid-feedback">
@@ -26,19 +28,19 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="form-group form-check">
+
+            <div class="form-group form-check mb-3">
                 {{ form.remember_me(class="form-check-input") }}
                 {{ form.remember_me.label(class="form-check-label") }}
             </div>
+
             <div class="form-group">
-                {{ form.submit(class="btn btn-primary btn-block") }}
+                {{ form.submit(class="btn btn-primary btn-block w-100") }}
             </div>
         </form>
         <p class="text-center mt-3">
-            Need an account? <a href="{{ url_for('register') }}">Register Here</a>
+            Need an account? <a href="{{ url_for('main.register') }}">Register Here</a>
         </p>
-        {# Add link for password reset later if implemented #}
-        {# <p class="text-center"><a href="#">Forgot Password?</a></p> #}
     </div>
 </div>
 {% endblock %}

@@ -1,28 +1,50 @@
-from sentence_transformers import SentenceTransformer, util
-from sumy.parsers.plaintext import PlaintextParser
-from sumy.nlp.tokenizers import Tokenizer
-from sumy.summarizers.lex_rank import LexRankSummarizer
-from sklearn.feature_extraction.text import TfidfVectorizer
-import nltk # Ensure NLTK is available for stopwords
-import numpy as np
+# AI Services
+# Conditionally import heavy libraries to allow core tests to run if they are not installed.
 
-# Load a pre-trained model for semantic similarity
-# This model will be downloaded on first use if not cached.
-# Using a relatively small but effective model.
 try:
+    from sentence_transformers import SentenceTransformer, util
     similarity_model = SentenceTransformer('all-MiniLM-L6-v2')
-except Exception as e:
-    print(f"Error loading SentenceTransformer model: {e}")
+except ImportError:
+    SentenceTransformer = None
+    util = None
     similarity_model = None
+    print("Warning: sentence-transformers not installed. Related notes functionality will be disabled.")
+except Exception as e: # Catch other errors during model loading (e.g., network issues)
+    SentenceTransformer = None
+    util = None
+    similarity_model = None
+    print(f"Error loading SentenceTransformer model: {e}. Related notes functionality will be disabled.")
+
+try:
+    from sumy.parsers.plaintext import PlaintextParser
+    from sumy.nlp.tokenizers import Tokenizer
+    from sumy.summarizers.lex_rank import LexRankSummarizer
+except ImportError:
+    PlaintextParser = None
+    Tokenizer = None
+    LexRankSummarizer = None
+    print("Warning: sumy not installed. Summarization functionality will be disabled.")
+
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+except ImportError:
+    TfidfVectorizer = None
+    print("Warning: scikit-learn not installed. Tag suggestion functionality will be disabled.")
+
+import nltk
+import numpy as np
 
 
 # Ensure stopwords are downloaded (this might be redundant if already in __init__.py but good for module independence)
 try:
     nltk.data.find('corpora/stopwords')
-except nltk.downloader.DownloadError:
+except LookupError: # Changed from nltk.downloader.DownloadError
     nltk.download('stopwords', quiet=True)
 
 def summarize_text(text, sentences_count=3):
+    if not PlaintextParser or not Tokenizer or not LexRankSummarizer:
+        print("Summarization skipped: sumy library not available.")
+        return "Summarization service unavailable."
     if not text or not text.strip():
         return ""
     parser = PlaintextParser.from_string(text, Tokenizer("english"))
@@ -31,28 +53,31 @@ def summarize_text(text, sentences_count=3):
     return " ".join([str(sentence) for sentence in summary])
 
 def suggest_tags(text, top_n=5):
+    if not TfidfVectorizer:
+        print("Tag suggestion skipped: scikit-learn library not available.")
+        return ["Tag suggestion service unavailable."]
     if not text or not text.strip():
         return []
     try:
         stop_words = nltk.corpus.stopwords.words('english')
-    except LookupError: # Should have been downloaded by __init__.py or above
-        nltk.download('stopwords', quiet=True) # Attempt download if somehow missed
+    except LookupError:
+        nltk.download('stopwords', quiet=True)
         stop_words = nltk.corpus.stopwords.words('english')
 
-    # Using unigrams and bigrams, limiting to top_n features (keywords)
-    # This means TF-IDF will effectively just pick the top N terms/phrases by frequency-inverse document frequency.
-    # For a single document, this simplifies to picking terms that are characteristic of this document.
     vectorizer = TfidfVectorizer(stop_words=stop_words, max_features=top_n, ngram_range=(1, 2), token_pattern=r'\b[a-zA-Z]{3,}\b')
 
     try:
-        vectorizer.fit_transform([text.lower()]) # Process a list of documents, here just one
+        vectorizer.fit_transform([text.lower()])
         feature_names = vectorizer.get_feature_names_out()
         return feature_names.tolist() if feature_names.any() else []
-    except ValueError: # Can happen if content is too short or all stopwords
+    except ValueError:
         return []
 
 def get_related_notes(current_note, all_other_notes, model, top_n=3):
-    if not model or not current_note.content or not all_other_notes:
+    if not model or not util: # Check for util as well, as it's imported with SentenceTransformer
+        print("Related notes skipped: sentence-transformers library not available or model not loaded.")
+        return []
+    if not current_note.content or not all_other_notes:
         return []
 
     # Filter out notes without content from all_other_notes first

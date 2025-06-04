@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
-from app.models import User # To check for existing username/email
+from .models import User # To check for existing username/email (Changed to relative import)
 
 class NoteForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])

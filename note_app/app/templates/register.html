@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %} {# Assuming Flask-Bootstrap is available or using similar macro for forms #}
 
 {% block title %}Register - Note App{% endblock %}
 
@@ -7,11 +6,11 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h1 class="mt-4 mb-4 text-center">Register New Account</h1>
-        {# Using a basic form rendering loop if wtf.quick_form is not set up #}
-        <form method="POST" action="{{ url_for('register') }}" novalidate>
+        <form method="POST" action="{{ url_for('main.register') }}" novalidate>
             {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.username.label(class="form-control-label") }}
+
+            <div class="form-group mb-3">
+                {{ form.username.label(class="form-label") }}
                 {{ form.username(class="form-control" + (" is-invalid" if form.username.errors else "")) }}
                 {% if form.username.errors %}
                     <div class="invalid-feedback">
@@ -19,8 +18,9 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.email.label(class="form-control-label") }}
+
+            <div class="form-group mb-3">
+                {{ form.email.label(class="form-label") }}
                 {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
                 {% if form.email.errors %}
                     <div class="invalid-feedback">
@@ -28,8 +28,9 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.password.label(class="form-control-label") }}
+
+            <div class="form-group mb-3">
+                {{ form.password.label(class="form-label") }}
                 {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else "")) }}
                 {% if form.password.errors %}
                     <div class="invalid-feedback">
@@ -37,8 +38,9 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.confirm_password.label(class="form-control-label") }}
+
+            <div class="form-group mb-3">
+                {{ form.confirm_password.label(class="form-label") }}
                 {{ form.confirm_password(class="form-control" + (" is-invalid" if form.confirm_password.errors else "")) }}
                 {% if form.confirm_password.errors %}
                     <div class="invalid-feedback">
@@ -46,12 +48,13 @@
                     </div>
                 {% endif %}
             </div>
+
             <div class="form-group">
-                {{ form.submit(class="btn btn-primary btn-block") }}
+                {{ form.submit(class="btn btn-primary btn-block w-100") }}
             </div>
         </form>
         <p class="text-center mt-3">
-            Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+            Already have an account? <a href="{{ url_for('main.login') }}">Log In</a>
         </p>
     </div>
 </div>

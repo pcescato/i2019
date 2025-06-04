@@ -1,12 +1,16 @@
-Flask
-Flask-SQLAlchemy
+Flask<2.3
+Flask-SQLAlchemy<3.0
+SQLAlchemy<2.0
 Flask-WTF
 Markdown
 Flask-WhooshAlchemyPlus
 nltk
-sumy
-scikit-learn
-sentence-transformers
+numpy
+# sumy
+# scikit-learn
+# sentence-transformers
 Flask-Login
-Werkzeug
+Werkzeug<3.0
 email-validator
+pytest
+pytest-flask
